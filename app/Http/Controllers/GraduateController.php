@@ -35,11 +35,11 @@ class GraduateController extends Controller
 
         $graduateDegree = GraduateDegree::with('degreeName')->with('schoolName')->with('graduates')->get();
 
-        // return $graduateDegree;
+        return $graduateDegree;
 
         // dd($graduateDegree);
 
-        dd($graduateDegree->graduates);
+        // dd($graduateDegree->graduates);
 
     }
 
