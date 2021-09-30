@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Graduate;
 
 class DatabaseSeeder extends Seeder
 {
@@ -11,6 +12,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UserSeeder::class);
+        factory(App\Graduate::class, 5)->create()->each(function ($graduate) {
+            $graduate->graduate_degrees()->save(factory(App\GraduateDegree::class)->make());
+        });
     }
 }
