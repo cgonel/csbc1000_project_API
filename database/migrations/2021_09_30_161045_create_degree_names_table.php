@@ -14,7 +14,7 @@ class CreateDegreeNamesTable extends Migration
     public function up()
     {
         Schema::create('degree_names', function (Blueprint $table) {
-            $table->uuid('id')->unique();
+            $table->id();
             $table->string('degree_name');
             $table->timestamps();
         });
@@ -27,6 +27,7 @@ class CreateDegreeNamesTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('degree_names');
         Schema::enableForeignKeyConstraints();
     }

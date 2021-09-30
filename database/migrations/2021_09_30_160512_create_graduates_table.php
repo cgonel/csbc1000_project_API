@@ -19,13 +19,6 @@ class CreateGraduatesTable extends Migration
             $table->string('email');
             $table->string('address');
             $table->string('phoneno');
-            $table->foreignId('graduate_degrees_id');
-            // $table->string('Associate_degree');
-            // $table->string('Associate_school');
-            // $table->string('UG_degree');
-            // $table->string('UG_school');
-            // $table->string('PG_degree');
-            // $table->string('PG_school');
             $table->uuid('userHash');
             $table->timestamps();
         });
@@ -38,6 +31,7 @@ class CreateGraduatesTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('graduates');
         Schema::enableForeignKeyConstraints();
     }

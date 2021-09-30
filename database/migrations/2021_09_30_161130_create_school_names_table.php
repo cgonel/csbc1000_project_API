@@ -14,7 +14,7 @@ class CreateSchoolNamesTable extends Migration
     public function up()
     {
         Schema::create('school_names', function (Blueprint $table) {
-            $table->uuid('id')->unique();
+            $table->id();
             $table->string('school_name');
             $table->timestamps();
         });
@@ -27,6 +27,7 @@ class CreateSchoolNamesTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('school_names');
         Schema::enableForeignKeyConstraints();
     }

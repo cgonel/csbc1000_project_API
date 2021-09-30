@@ -14,7 +14,9 @@ class GraduateController extends Controller
      */
     public function index()
     {
-        return Graduate::orderBy('id')->get();
+        // return Graduate::with('graduate_degrees')->get();
+        $data = Graduate::with('graduate_degrees')->get();
+        dd($data);
     }
 
     /**

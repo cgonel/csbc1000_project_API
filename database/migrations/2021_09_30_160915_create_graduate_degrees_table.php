@@ -14,9 +14,13 @@ class CreateGraduateDegreesTable extends Migration
     public function up()
     {
         Schema::create('graduate_degrees', function (Blueprint $table) {
-            $table->uuid('id')->unique();
-            $table->foreignId('degree_name_id');
-            $table->foreignId('school_name_id');
+            $table->id();
+            $table->index('graduate_id');
+            $table->unsignedBigInteger('graduate_id');
+            $table->index('degree_name_id');
+            $table->unsignedBigInteger('degree_name_id');
+            $table->index('school_name_id');
+            $table->unsignedBigInteger('school_name_id');
             $table->string('year_issued');
             $table->timestamps();
         });
@@ -29,6 +33,7 @@ class CreateGraduateDegreesTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('graduate_degrees');
         Schema::enableForeignKeyConstraints();
     }
