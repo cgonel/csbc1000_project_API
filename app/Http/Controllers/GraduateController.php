@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\Graduate;
 use App\GraduateDegree;
 
@@ -15,32 +16,9 @@ class GraduateController extends Controller
      */
     public function index()
     {
-        // return Graduate::with('graduate_degrees')->with('degreeName')->with('schoolName')->get();
-        // $data = Graduate::with('graduate_degrees')->get();
-        // $data = Graduate::with('graduate_degrees')->find(17);
-        // $data = Graduate::with('graduate_degrees')->with('degreeName')->with('schoolName')->get();
-        // return GraduateDegree::with('degreeName')->with('schoolName')->get();
-        // dd($data);
-
-        // $graduate = Graduate::with('graduate_degrees')->get();
-        // $graduateDegree = GraduateDegree::with('degreeName')->with('schoolName')->get();
-
-        // $subQuery = GraduateDegree::with('degreeName')->with('schoolName')->get();
-
-        // $graduates = Graduate::joinSub($subQuery, 'graduate_degrees', function($join) {
-        //     $join->on('graduates.id', '=', 'graduate_degrees.graduate_id');
-        // })->get();
-
-        // $result = $graduate->merge($graduateDegree);
-
         $graduatesDegree = GraduateDegree::with('degreeName')->with('schoolName')->with('graduates')->get();
 
         return $graduatesDegree;
-
-        // dd($graduateDegree);
-
-        // dd($graduateDegree->graduates);
-
     }
 
     /**
@@ -61,9 +39,29 @@ class GraduateController extends Controller
      */
     public function store(Request $request)
     {
-        // $this->validate($request, );
+        // if (){
+            $validatedData = $request->validate([
+                'full_name' => 'required',
+                'email' => 'required',
+                'address' => 'required',
+                'phoneno' => 'required'
+            ]);
 
-        
+            $graduate = new Graduate;
+
+            $graduate->full_name = $request->full_name;
+            $graduate->email = $request->email;
+            $graduate->address = $request->address;
+            $graduate->phoneno = $request->phoneno;
+            $graduate->userHash = Str::uuid();
+
+       
+            $graduate->save();
+
+            return "The graduate was added!";
+        // } else{
+        //     return 'Failed.';
+        // }
     }
 
     /**
@@ -100,9 +98,29 @@ class GraduateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $userHash)
     {
-        //
+        $graduate = Graduate::where('userHash', $userHash)->first();
+
+        if($request->full_name){
+            $graduate->full_name = $request->full_name;
+        }
+
+        if($request->email){
+            $graduate->email = $request->email;
+        }
+
+        if($request->address){
+            $graduate->address = $request->address;
+        }
+
+        if($request->phoneno){
+            $graduate->phoneno = $request->phoneno;
+        }
+
+        $graduate->save();
+
+        return 'Changes done!';
     }
 
     /**

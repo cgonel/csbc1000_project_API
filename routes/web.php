@@ -17,4 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('graduate', GraduateController::class);
+Route::resources([
+    'graduate' => GraduateController::class,
+    'credential' => CredentialController::class,
+]);
