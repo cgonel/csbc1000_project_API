@@ -26,6 +26,10 @@ For updating composer (if required)
 
 run `composer update`
 
+Generate Application Key 
+
+run `php artisan key:generate`
+
 
 
 ## License
