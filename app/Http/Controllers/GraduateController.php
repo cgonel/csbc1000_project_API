@@ -39,7 +39,6 @@ class GraduateController extends Controller
      */
     public function store(Request $request)
     {
-        // if (){
             $validatedData = $request->validate([
                 'full_name' => 'required',
                 'email' => 'required',
@@ -55,13 +54,13 @@ class GraduateController extends Controller
             $graduate->phoneno = $request->phoneno;
             $graduate->userHash = Str::uuid();
 
-       
-            $graduate->save();
+            try{
+                $graduate->save();
+                return "The graduate was added!";
 
-            return "The graduate was added!";
-        // } else{
-        //     return 'Failed.';
-        // }
+            }catch(Exception $e){
+                return $e->getMessage();
+            }
     }
 
     /**

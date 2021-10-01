@@ -49,9 +49,13 @@ class CredentialController extends Controller
         $degree->school_name_id = $request->school_name_id;
         $degree->year_issued = $request->year_issued;
 
-        $degree->save();
+        try{
+            $degree->save();
+            return "The degree has been entered!";
 
-        return "The degree has been entered!";
+        }catch(Exception $e){
+            return $e->getMessage();
+        }
     }
 
     /**

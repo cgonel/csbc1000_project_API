@@ -22,13 +22,15 @@ Note: if you want to populate the database with dummy data.
 
 run `php artisan db:seed`
 
-For updating composer (if required)
+For updating dependencies (if required)
 
 run `composer update`
 
 Generate Application Key 
 
 run `php artisan key:generate`
+
+<strong>To execute a patch request on Postman with Laravel, you need to label it a post request and pass "_method:patch" key value in the body.</strong>
 
 
 
