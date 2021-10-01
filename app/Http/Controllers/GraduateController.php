@@ -33,9 +33,9 @@ class GraduateController extends Controller
 
         // $result = $graduate->merge($graduateDegree);
 
-        $graduateDegree = GraduateDegree::with('degreeName')->with('schoolName')->with('graduates')->get();
+        $graduatesDegree = GraduateDegree::with('degreeName')->with('schoolName')->with('graduates')->get();
 
-        return $graduateDegree;
+        return $graduatesDegree;
 
         // dd($graduateDegree);
 
@@ -61,7 +61,9 @@ class GraduateController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $this->validate($request, );
+
+        
     }
 
     /**
