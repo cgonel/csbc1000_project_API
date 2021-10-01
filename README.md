@@ -22,9 +22,9 @@ Note: if you want to populate the database with dummy data.
 
 run `php artisan db:seed`
 
-For updating consposer if required
+For updating composer (if required)
 
-run 'composer update'
+run `composer update`
 
 
 
