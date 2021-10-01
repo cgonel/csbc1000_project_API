@@ -22,6 +22,14 @@ Note: if you want to populate the database with dummy data.
 
 run `php artisan db:seed`
 
+For updating composer (if required)
+
+run `composer update`
+
+Generate Application Key 
+
+run `php artisan key:generate`
+
 
 
 ## License
