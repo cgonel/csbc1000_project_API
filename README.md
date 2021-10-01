@@ -30,7 +30,7 @@ Generate Application Key
 
 run `php artisan key:generate`
 
-<strong>To execute a patch request on Postman with Laravel, you need to label it a post request and pass "_method:patch" key value in the body.</strong>
+<strong>To execute a patch request on Postman, you need to label it as a post request and pass "_method:patch" key value in the body.</strong>
 
 
 
